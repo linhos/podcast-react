@@ -1,30 +1,16 @@
-import React, {useEffect, useState} from 'react';
-
+import React, { useEffect, useState } from "react";
+import { getPodcasts } from "../services/getPodcasts";
 
 export const useFavourites = (keyword) => {
+  const [favourites, setFavourites] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    const FAKE_DATA = [
-        {id: 1, name: 'titulo1'},
-        {id:2, name: 'titulo2'},
-        {id:3, name: 'titulo3'}
-    ];
+  useEffect(() => {
+    getPodcasts().then((podcasts) => {
+      setFavourites(podcasts);
+      setLoading(false);
+    });
+  }, [keyword]);
 
-    const [favourites, setFavourites] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        let result = []
-        if (keyword) {
-            result = FAKE_DATA.filter((value) => value.name === keyword);
-        } else {
-            result = FAKE_DATA.map((value) => value);
-        }
-        
-        setFavourites(result);
-        setLoading(false);
-
-    }, [keyword]);
-
-    return {favourites, loading}
-
-}
+  return { favourites, loading };
+};
