@@ -1,17 +1,19 @@
 import React from "react";
-import { useFavourites } from "../../hooks/useFavourites";
 
-const ListOfFavourites = () => {
-  const { favourites, loading } = useFavourites();
 
-  console.log(favourites)
-
+const ListOfFavourites = ({loading, favourites}) => {
   return (
-    <ul>
-      {favourites.map((value) => (
-        <li key={value.username}>{value.username}</li>
-      ))}
-    </ul>
+    <>
+      <h5>Favoritos</h5>
+      <ul>
+        {loading &&
+          <h6>cargando ...</h6>
+        }
+        {favourites.map((value) => (
+          <li key={value.username}>{value.username}</li>
+        ))}
+      </ul>
+    </>
   );
 };
 

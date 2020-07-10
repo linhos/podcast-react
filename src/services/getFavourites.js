@@ -10,7 +10,7 @@ function getFavourites () {
     return fetch(apiUrl)
         .then(response => response.json())
         .then(json => result.favourites = json)
-        .catch(error => [...error, error.toString()]);
+        .catch(error => [...result.errors, error.toString()]);
 
     
 }
