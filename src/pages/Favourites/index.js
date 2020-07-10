@@ -3,9 +3,7 @@ import {useFavourites} from '../../hooks/useFavourites';
 import {ListOfFavourites} from '../../components/ListOfFavourites'
 
 const Favourites = () => {
-
     const {favourites, loading} = useFavourites();
-
     return <ListOfFavourites loading={loading} favourites={favourites} />
 }
 
