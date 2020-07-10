@@ -1,12 +1,12 @@
 import React from 'react';
-import { Favourites } from '../Favourites';
+import { ListOfFavourites } from '../ListOfFavourites';
 import { useParams } from "react-router-dom";
 
 
 const SearchResults = () => {
 
     const {keyword} = useParams();
-    return <Favourites keyword={keyword} />
+    return <ListOfFavourites keyword={keyword} />
    
 }
 

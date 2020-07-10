@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { getPodcasts } from "../services/getPodcasts";
+import React, {useEffect, useState} from 'react';
+import {getFavourites} from '../services/getFavourites';
 
-export const useFavourites = (keyword) => {
+const useFavourites = () => {
+
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    getPodcasts().then((podcasts) => {
-      setFavourites(podcasts);
+    getFavourites().then(favourites => {
+      setFavourites(favourites);
       setLoading(false);
-    });
-  }, [keyword]);
+    })
+  }, []);
 
-  return { favourites, loading };
-};
+  return {favourites, loading}
+
+}
+
+export {useFavourites}

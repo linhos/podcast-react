@@ -1,13 +1,12 @@
 import React from 'react';
-import {Favourites} from '../../components/Favourites';
+import {Podcasts} from '../../components/Podcasts';
 
 const HomePage = () => {
-
     return (
         <>
-            <Favourites keyword={false} />
+            <Podcasts />
         </>
     )
-
 }
+
 export {HomePage}

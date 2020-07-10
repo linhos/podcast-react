@@ -20,7 +20,7 @@ function NavBar () {
         <nav className="Nav"> 
             <Link to="/" className="links">Inicio</Link>
             <Link to={`/search/ann`} className="links">Buscar</Link>
-            <Link to="" className="links">Favoritos</Link>
+            <Link to="/favourites" className="links">Favoritos</Link>
         </nav>
     )
 }
