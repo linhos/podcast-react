@@ -1,12 +1,15 @@
 import React from 'react';
-import {Podcasts} from '../../components/Podcasts';
+import {ListOfPodcasts} from '../../components/ListOfPodcasts';
+import {usePodcasts} from '../../hooks/usePodcasts';
 
-const HomePage = () => {
+const Home = () => {
+    const {podcasts, loading} = usePodcasts();
+
     return (
         <>
-            <Podcasts />
+            <ListOfPodcasts podcasts={podcasts} loading={loading} />
         </>
     )
 }
 
-export {HomePage}
+export {Home}

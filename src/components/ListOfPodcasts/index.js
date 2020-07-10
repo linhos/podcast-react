@@ -1,10 +1,11 @@
 import React from 'react';
-import {usePodcasts} from '../../hooks/usePodcasts'
 
-const Podcasts = () => {
-    const {podcasts, loading} = usePodcasts();
+const ListOfPodcasts = (props) => {
+    
+    const {podcasts, loading} = props;
 
-    return <ul>
+    return (<ul>
+        <h5>Podcasts</h5>
         {loading && 
             <h6>Cargando ...</h6>
         }
@@ -12,8 +13,8 @@ const Podcasts = () => {
             podcasts.map((podcast) => <li key={podcast.body}>{podcast.body}</li>)
         }
         
-    </ul>
+    </ul>);
 
 }
 
-export {Podcasts}
+export {ListOfPodcasts}

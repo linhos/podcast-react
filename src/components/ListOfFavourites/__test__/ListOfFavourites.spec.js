@@ -19,7 +19,6 @@ describe('test suite for ListOfFavourites', () => {
         expect(linkElement).toBeInTheDocument();
     });
 
-
     test('show cargando... text while waiting for promise to resolve', () => {
         const useFavouritesMock = {
             favourites: [],
