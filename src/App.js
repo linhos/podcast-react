@@ -8,6 +8,7 @@ import {
 import {Home} from './pages/Home';
 import Favourites from './pages/Favourites';
 import Login from './pages/Login';
+import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import {NavBar} from './components/NavBar';
 import { SearchResults } from './components/SearchResults';
@@ -24,6 +25,7 @@ function App() {
 
           <Switch>
             <Route exact path="/login" component={Login} />
+            <Route exact path="/register" component={Register} />
             <Route exact path="/dashboard" component={Dashboard}  />
             <Route exact path="/search/:keyword" component={SearchResults}  />
             <Route exact path="/favourites" component={Favourites}  />

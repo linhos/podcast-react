@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const ListOfPodcasts = (props) => {
     
@@ -14,7 +15,10 @@ const ListOfPodcasts = (props) => {
         }
         
     </ul>);
+}
 
+ListOfPodcasts.propTypes = {
+    podcasts: PropTypes.array.isRequired,
 }
 
 export {ListOfPodcasts}

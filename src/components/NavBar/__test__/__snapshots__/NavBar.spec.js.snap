@@ -29,6 +29,12 @@ exports[`renders 1`] = `
     >
       Login
     </a>
+    <a
+      class="links"
+      href="/register"
+    >
+      Register
+    </a>
   </nav>
 </DocumentFragment>
 `;
