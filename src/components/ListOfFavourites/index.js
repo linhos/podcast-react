@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from 'prop-types';
 
 const ListOfFavourites = ({loading, favourites}) => {
   return (
@@ -16,5 +16,10 @@ const ListOfFavourites = ({loading, favourites}) => {
     </>
   );
 };
+
+ListOfFavourites.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  favourites: PropTypes.array.isRequired,
+}
 
 export { ListOfFavourites };
