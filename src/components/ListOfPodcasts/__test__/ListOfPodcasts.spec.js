@@ -4,9 +4,6 @@ import { ListOfPodcasts } from '../index';
 
 describe('test suite for List of podcasts component', () => {
 
-    beforeEach(() => {
-        
-    })
     it('should render the title of the component', () => {
         const usePodcastsMock = {
             podcasts : [],
