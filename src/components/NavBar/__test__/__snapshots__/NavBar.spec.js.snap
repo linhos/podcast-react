@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders 1`] = `
+<DocumentFragment>
+  <nav
+    class="Nav"
+  >
+    <a
+      class="links"
+      href="/"
+    >
+      Inicio
+    </a>
+    <a
+      class="links"
+      href="/search/ann"
+    >
+      Buscar
+    </a>
+    <a
+      class="links"
+      href="/favourites"
+    >
+      Favoritos
+    </a>
+    <a
+      class="links"
+      href="/login"
+    >
+      Login
+    </a>
+  </nav>
+</DocumentFragment>
+`;

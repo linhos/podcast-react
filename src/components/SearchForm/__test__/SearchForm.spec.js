@@ -5,7 +5,7 @@ import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 
 test('renders learn react link', () => {
-    const history = createMemoryHistory()
+    const history = createMemoryHistory();
     const { getByText } = render(
             <Router history={history}>
                 <SearchForm />
@@ -15,3 +15,13 @@ test('renders learn react link', () => {
     const linkElement = getByText(/Buscar/i);
     expect(linkElement).toBeInTheDocument();
 });
+
+it('renders', () => {
+    const history = createMemoryHistory();
+    const {asFragment} = render(
+        <Router history={history}>
+                <SearchForm />
+            </Router>
+    )
+    expect(asFragment()).toMatchSnapshot();
+})
