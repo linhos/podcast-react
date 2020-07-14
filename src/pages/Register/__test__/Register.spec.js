@@ -8,10 +8,9 @@ describe('test suite for Register component', () => {
 
     const mockFunctions = {
         handleRegisterFormSubmit: jest.fn(),
-
     }
 
-    it('when fields are empty', async () => {
+    it('submit form when fields are empty', async () => {
 
         const {
             getByLabelText,
@@ -24,9 +23,7 @@ describe('test suite for Register component', () => {
         const emailInput = getByLabelText('Email');
         const passwordInput = getByLabelText('Contraseña');
 
-        console.log(usernameInput.value);
-
-        expect(mockFunctions.handleRegisterFormSubmit).toHaveBeenCalledTimes(0)
+        expect(mockFunctions.handleRegisterFormSubmit).toHaveBeenCalledTimes(0);
         
         fireEvent.blur(usernameInput);
         fireEvent.blur(emailInput);
@@ -40,11 +37,11 @@ describe('test suite for Register component', () => {
 
         expect((await findByTestId("email-errors")).innerHTML).toBe(
             "El email es obligatorio."
-        )
+        );
     })
 
     it('renders', () => {
-        const {asFragment} = render(<Register />)
+        const {asFragment} = render(<Register />);
         expect(asFragment).toMatchSnapshot();
     })
 
@@ -62,7 +59,7 @@ describe('test suite for Register component', () => {
         expect(passwordInput).toHaveAttribute('required');
 
         const submitButton = getByText('Registro');
-        expect(submitButton).toHaveValue('Registro')
+        expect(submitButton).toHaveValue('Registro');
     })
 
 })
