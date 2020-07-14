@@ -7,6 +7,8 @@ import {
 
 import {Home} from './pages/Home';
 import Favourites from './pages/Favourites';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
 import {NavBar} from './components/NavBar';
 import { SearchResults } from './components/SearchResults';
 
@@ -21,9 +23,12 @@ function App() {
           <hr />
 
           <Switch>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/dashboard" component={Dashboard}  />
             <Route exact path="/search/:keyword" component={SearchResults}  />
             <Route exact path="/favourites" component={Favourites}  />
             <Route exact path="/:id?" component={Home}  />
+
           </Switch>
         </div>
       </Router>
