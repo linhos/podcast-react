@@ -1,18 +1,21 @@
-import {API_URL} from './settings';
+import { API_URL } from "./settings";
 
-function getFavourites () {
-    const result = {
-        favourites: [],
-        errors: []
-    }
-    const apiUrl = `${API_URL}users`;
+async function getFavourites() {
+  const result = {
+    favourites: [],
+    errors: [],
+  };
+  const apiUrl = `${API_URL}users`;
 
-    return fetch(apiUrl)
-        .then(response => response.json())
-        .then(json => result.favourites = json)
-        .catch(error => [...result.errors, error.toString()]);
-
-    
+  try {
+    const response = await fetch(apiUrl);
+    const json = await response.json();
+    result.favourites = json;
+  } catch (error) {
+    console.log(error);
+    result.errors = [...result.errors, error.toString()];
+  }
+  return result;
 }
 
-export {getFavourites};
+export { getFavourites };
