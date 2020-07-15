@@ -1,14 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {getFavourites} from '../services/getFavourites';
+import application from '../services';
 
 const useFavourites = (keyword=false) => {
 
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
+  
 
   useEffect(() => {
-    getFavourites().then(favourites => {
-      setFavourites(favourites);
+
+    application.favourite.find().then(result => {
+      setFavourites(result.favourites);
       setLoading(false);
     })
   }, []);

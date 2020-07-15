@@ -11,7 +11,7 @@ const ListOfPodcasts = (props) => {
             <h6>Cargando ...</h6>
         }
         {podcasts && 
-            podcasts.map((podcast) => <li key={podcast.body}>{podcast.body}</li>)
+            podcasts.map((podcast) => <li key={podcast.name}>{podcast.name}</li>)
         }
         
     </ul>);
