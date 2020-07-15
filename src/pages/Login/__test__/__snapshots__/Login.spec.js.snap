@@ -14,6 +14,7 @@ exports[`test suite for Login Component renders 1`] = `
     <input
       id="email"
       name="email"
+      placeholder="usuario"
       type="text"
     />
     <hr />
@@ -25,6 +26,7 @@ exports[`test suite for Login Component renders 1`] = `
     <input
       id="password"
       name="password"
+      placeholder="contraseña"
       type="password"
     />
     <br />

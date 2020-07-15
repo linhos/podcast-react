@@ -1,5 +1,5 @@
 import React from 'react';
-import {render, cleanup, fireEvent} from '@testing-library/react';
+import {render, cleanup, fireEvent, waitFor} from '@testing-library/react';
 
 
 import Login from '../index';
@@ -45,11 +45,30 @@ describe('test suite for Login Component', () => {
 
         expect((await findByTestId('email-errors')).innerHTML).toBe('El usuario es obligatorio.');
         expect((await findByTestId('password-errors')).innerHTML).toBe('La contraseña es obligatoria.')
-
-    })
+    });
 
     it('renders', () => {
         const {asFragment} = render(<Login />);
         expect(asFragment()).toMatchSnapshot();
-    })
+    });
+
+    it('redirect user when logged in is correct', async() => {
+
+        const mockUserData = {
+            username: 'user@fake.com',
+            password: '123456'
+        }
+
+        const {
+            getByLabelText,
+        } = render(<Login />);
+
+        const emailInput = getByLabelText('usuario');
+        const passwordINput = getByLabelText('contraseña');
+
+        await waitFor(() => {
+            fire
+        })
+
+    });
 })

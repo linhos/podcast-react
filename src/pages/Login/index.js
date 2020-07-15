@@ -26,7 +26,6 @@ const Login = () => {
                 history.push(`/dashboard`);
             }
         }
-
     }
 
     const handleEmailChange = (event) => {
@@ -43,13 +42,13 @@ const Login = () => {
             <h1>Login</h1>
             <form ref={loginForm} onSubmit={handleLoginSubmit}>
                 <label htmlFor='email'>Usuario</label>
-                <input type="text" name="email" id="email" onChange={handleEmailChange}/>
+                <input type="text" name="email" id="email" onChange={handleEmailChange} placeholder="usuario"/>
                 {emailError &&
                     <div data-testid="email-errors" className="error">{emailError}</div>
                 }
                 <hr />
                 <label htmlFor='password'>Contraseña</label>
-                <input type="password" name="password" id="password" onChange={handlePasswordChange}/>
+                <input type="password" name="password" id="password" onChange={handlePasswordChange} placeholder="contraseña"/>
                 {passwordError &&
                     <div data-testid="password-errors" className="error">{passwordError}</div>
                 }
