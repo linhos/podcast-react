@@ -28,7 +28,8 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/dashboard" component={Dashboard}  />
-            <Route exact path="/search/:keyword" component={SearchResults}  />
+            <Route exact path="/search/favourites" component={SearchResults}  />
+            <Route exact path="/search" component={SearchResults}  />
             <Route exact path="/favourites" component={Favourites}  />
             <Route exact path="/properties" component={Properties}  />
             <Route exact path="/:id?" component={Home}  />
