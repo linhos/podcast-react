@@ -1,7 +1,13 @@
 import React from "react";
-import PropTypes from 'prop-types';
+import PropTypes, { number } from 'prop-types';
 
-const ListOfFavourites = ({loading, favourites}) => {
+
+interface ListOfFavouritesProps {
+  loading: boolean
+  favourites: Array<{id: number, name: string}>
+}
+
+const ListOfFavourites = ({loading, favourites}: ListOfFavouritesProps) => {
   return (
     <>
       <h5>Favoritos</h5>

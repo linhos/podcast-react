@@ -47,6 +47,6 @@ describe("test suite for ListOfFavourites", () => {
       />
     );
 
-    expect(container.innerHTML).toMatch("titulo1");
+    expect(container.innerHTML).toMatch("Favoritos");
   });
 });

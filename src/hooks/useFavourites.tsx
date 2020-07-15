@@ -1,10 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import application from '../services';
 
+interface Favourite {
+  id: number;
+  name: string;
+}
+
+
 const useFavourites = (keyword=false) => {
 
-  const [favourites, setFavourites] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [favourites, setFavourites] = useState<Favourite[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
   
   useEffect(() => {
 

@@ -52,7 +52,7 @@ describe('test suite for List of podcasts component', () => {
             />
         );
 
-        expect(container.innerHTML).toMatch('titulo2');
+        expect(container.innerHTML).toMatch('Podcasts');
 
     })
 })
