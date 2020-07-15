@@ -9,7 +9,7 @@ const findFavouritesUseCase = (repository) => {
         try {
             result.favourites = await repository.find();
         } catch (error) {
-            result.errors = [...result.errors, error.toString()]
+            result.errors = [...result.errors, error.toString()];
         }   
         return result;
     }

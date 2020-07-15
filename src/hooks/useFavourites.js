@@ -6,7 +6,6 @@ const useFavourites = (keyword=false) => {
   const [favourites, setFavourites] = useState([]);
   const [loading, setLoading] = useState(true);
   
-
   useEffect(() => {
 
     application.favourite.find().then(result => {
