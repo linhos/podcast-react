@@ -3,7 +3,6 @@ import {useHistory} from 'react-router-dom';
 
 const SearchForm: React.FC = () => {
     const history = useHistory();
-
     const [search, setSearch] = useState('');
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
