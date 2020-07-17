@@ -4,12 +4,14 @@ import { render, cleanup, fireEvent, waitFor } from "@testing-library/react";
 import { createMemoryHistory } from "history";
 
 import Login from "../index";
-import loginUser from "../../../services/loginUser";
-
-jest.mock("../../../services/loginUser");
+import * as loginUser from "../../../services/loginUser";
 
 describe("test suite for Login Component", () => {
   afterEach(cleanup);
+
+  beforeEach(() => {
+    jest.resetAllMocks();
+  });
 
   const mockFunctions = {
     handleLoginSubmit: jest.fn(),
@@ -56,58 +58,21 @@ describe("test suite for Login Component", () => {
     expect(asFragment()).toMatchSnapshot();
   });
 
-  it("show validation error message ir errors array is not empty", async () => {
-    const mockUserData = {
-      username: "user@fake.com",
-      password: "123456",
-    };
-
-    const mockResponse = {
-      user: {},
-      errors: ["error 1"],
-    };
-
-    const mockService = {
-      loginUser: jest.fn().mockRejectedValue(mockResponse),
-    };
-
-    const history = createMemoryHistory();
-
-    const { getByLabelText, getByText } = render(
-      <Router history={history}>
-        <Login />
-      </Router>
-    );
-
-    const emailInput = getByLabelText("Usuario");
-    const passwordInput = getByLabelText("Contraseña");
-    const submitButton = getByText("Inicia sesión");
-
-    await waitFor(() => {
-      fireEvent.change(emailInput, {
-        target: { value: mockUserData.username },
-      });
-      fireEvent.change(passwordInput, {
-        target: { value: mockUserData.password },
-      });
-      fireEvent.submit(submitButton);
-    });
-  });
-
   it("redirect user when logged in is correct", async () => {
     const mockUserData = {
       username: "user@fake.com",
       password: "123456",
     };
 
-    const history = createMemoryHistory();
+    const loginUserActionMock = jest.spyOn(loginUser, "default");
 
-    const { getByLabelText, getByText } = render(
+    const history = createMemoryHistory();
+    const { container, getByLabelText, getByText } = render(
       <Router history={history}>
         <Login />
       </Router>
     );
-
+    const form = container.querySelector("form");
     const emailInput = getByLabelText("Usuario");
     const passwordInput = getByLabelText("Contraseña");
     const submitButton = getByText("Inicia sesión");
@@ -121,7 +86,15 @@ describe("test suite for Login Component", () => {
       fireEvent.change(passwordInput, {
         target: { value: mockUserData.password },
       });
-      fireEvent.submit(submitButton);
+      fireEvent.submit(form);
+
+      expect(loginUserActionMock).toHaveBeenCalledWith(
+        "user@fake.com",
+        "123456"
+      );
+
+      expect(loginUserActionMock).toHaveBeenCalledTimes(1);
+
       expect(history.location.pathname).toBe("/dashboard");
     });
   });

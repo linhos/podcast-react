@@ -2,6 +2,20 @@ import React, { useRef, useState } from "react";
 import { useHistory } from "react-router-dom";
 import loginUser from "../../services/loginUser";
 
+interface User {
+  active: boolean
+  email: string
+  name: string
+}
+
+interface UserSession {
+  user: {
+    [key:string]: User
+  }
+  errors: Array<string>
+}
+
+
 const Login: React.FC = () => {
   const history = useHistory();
   const loginForm = useRef(null);
@@ -9,10 +23,12 @@ const Login: React.FC = () => {
   const [emailError, setEmailError] = useState('');
   const [password, setPassword] = useState('');
   const [passwordError, setPasswordError] = useState('');
-  const [validationError, setValidationError] = useState('');
+  const [validationError, setValidationError] = useState<string[]>([]);
+  const [userSession, setUserSession] = useState<UserSession>({user:{}, errors: []});
 
   const handleLoginSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    
     if (!email) {
       setEmailError("El usuario es obligatorio.");
     }
@@ -21,12 +37,14 @@ const Login: React.FC = () => {
     }
 
     if (email && password) {
-      const result = loginUser(email, password);
 
-      if(result.errors.length !== 0) {
-        setValidationError('Los datos proporcionados no son válidos.')
-      } else {
-        history.push(`/dashboard`);
+      const result = loginUser(email, password);
+      setUserSession(result);
+
+      setValidationError(result.errors);
+
+      if(result.errors.length === 0) {
+        history.push('/dashboard');
       }
     }
   };
@@ -74,7 +92,9 @@ const Login: React.FC = () => {
         )}
         {validationError && (
           <div data-testid="validation-errors" className="error">
-            {validationError}
+            {validationError.map((error) => (
+              <li>{error}</li>
+            ))}
           </div>
         )}
         <br />

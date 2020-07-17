@@ -29,6 +29,10 @@ exports[`test suite for Login Component renders 1`] = `
       placeholder="contraseña"
       type="password"
     />
+    <div
+      class="error"
+      data-testid="validation-errors"
+    />
     <br />
     <br />
     <input
