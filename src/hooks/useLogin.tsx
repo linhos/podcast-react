@@ -22,9 +22,10 @@ const useLogin = (email: string, password:string) => {
 
     useEffect(() => {
         const result = loginUser(email, password);
+        console.log(result);
         setUser(result);
         setLoading(false);
-    }, []);
+    }, [email, password]);
 
     return {user, loading};
 
