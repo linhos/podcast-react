@@ -1,9 +1,23 @@
 import React, {useState, useEffect} from 'react';
 import loginUser from '../services/loginUser';
 
-const useLogin = (email, password) => {
+interface User {
+    active: boolean;
+    email: string;
+    name: string;
+}
 
-    const [user, setUser] = useState({});
+interface UserSession {
+    user: {
+      [key:string]: User
+    }
+    errors: Array<string>
+  }
+
+
+const useLogin = (email: string, password:string) => {
+
+    const [user, setUser] = useState<UserSession>({user:{}, errors: []});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
