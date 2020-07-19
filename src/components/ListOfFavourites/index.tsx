@@ -1,13 +1,19 @@
 import React from "react";
-import PropTypes, { number } from 'prop-types';
+import PropTypes from 'prop-types';
+import styled from 'styled-components'
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`
 
 interface ListOfFavouritesProps {
   loading: boolean
-  favourites: Array<{id: number, name: string}>
+  favourites: Array<{userId: number, id: number, title: string, completed: boolean}>
 }
 
 const ListOfFavourites = ({loading, favourites}: ListOfFavouritesProps) => {
+  console.log(favourites)
   return (
     <>
       <h5>Favoritos</h5>
@@ -15,9 +21,11 @@ const ListOfFavourites = ({loading, favourites}: ListOfFavouritesProps) => {
         {loading &&
           <h6>cargando ...</h6>
         }
-        {favourites.map((value) => (
-          <li key={value.name}>{value.name}</li>
-        ))}
+        <Wrapper data-testid="FavouriteTile">
+          {favourites.map((value) => (
+            <li key={value.id}>{value.title}</li>
+          ))}
+        </Wrapper>
       </ul>
     </>
   );

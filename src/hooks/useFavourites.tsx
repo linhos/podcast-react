@@ -2,8 +2,10 @@ import React, {useEffect, useState} from 'react';
 import application from '../services';
 
 interface Favourite {
-  id: number;
-  name: string;
+  id: number
+  userId: number
+  title: string
+  completed: boolean
 }
 
 
