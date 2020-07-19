@@ -11,6 +11,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Properties from './pages/Properties';
 import Dashboard from './pages/Dashboard';
+import {Notice} from './pages/Notice';
 import {NavBar} from './components/NavBar';
 import { SearchResults } from './components/SearchResults';
 
@@ -28,6 +29,7 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/register" component={Register} />
             <Route exact path="/dashboard" component={Dashboard}  />
+            <Route exact path="/notices" component={Notice}  />
             <Route exact path="/search/favourites" component={SearchResults}  />
             <Route exact path="/search" component={SearchResults}  />
             <Route exact path="/favourites" component={Favourites}  />

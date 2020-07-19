@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup, fireEvent, waitFor } from "@testing-library/react";
-import Notice from '../Notice'
+import {Notice} from '../Notice'
 
 describe('test suite for Notice Page', () => {
     const setup = () => render(<Notice />);

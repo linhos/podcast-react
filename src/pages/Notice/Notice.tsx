@@ -9,4 +9,4 @@ const Notice: React.FC = () => {
     )
 }
 
-export default Notice;
+export {Notice};

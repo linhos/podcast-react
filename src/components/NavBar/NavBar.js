@@ -21,6 +21,7 @@ function NavBar () {
             <Link to="/" className="links">Inicio</Link>
             <Link to={`/search/`} className="links">Buscar</Link>
             <Link to="/favourites" className="links">Favoritos</Link>
+            <Link to="/notices" className="links">Avisos</Link>
             <Link to="/login" className="links">Login</Link>
             <Link to="/register" className="links">Register</Link>
         </nav>
