@@ -13,7 +13,7 @@ interface ListOfFavouritesProps {
 }
 
 const ListOfFavourites = ({loading, favourites}: ListOfFavouritesProps) => {
-  console.log(favourites)
+
   return (
     <>
       <h5>Favoritos</h5>
@@ -21,11 +21,13 @@ const ListOfFavourites = ({loading, favourites}: ListOfFavouritesProps) => {
         {loading &&
           <h6>cargando ...</h6>
         }
-        <Wrapper data-testid="FavouriteTile">
+        
           {favourites.map((value) => (
-            <li key={value.id}>{value.title}</li>
+            <Wrapper data-testid="FavouriteTile" key={value.id}>
+              <li >{value.title}</li>
+            </Wrapper>
           ))}
-        </Wrapper>
+        
       </ul>
     </>
   );

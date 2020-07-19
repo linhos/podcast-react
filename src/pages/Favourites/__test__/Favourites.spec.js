@@ -6,8 +6,11 @@ describe("test suite for Favourites page", () => {
   const setupFav = () => render(<Favourites />);
 
   it("should render", async () => {
-    const { findAllByTestId } = setupFav();
+    const { findAllByTestId, getByText } = setupFav();
 
-    expect(await findAllByTestId("FavouriteTile")).toHaveLength(2);
+    const titleElement = getByText(/Favoritos/i);
+    
+    expect(titleElement).toBeInTheDocument();
+    expect(await findAllByTestId("FavouriteTile")).toHaveLength(200);
   });
 });

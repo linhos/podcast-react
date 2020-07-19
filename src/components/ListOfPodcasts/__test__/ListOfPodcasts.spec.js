@@ -39,20 +39,22 @@ describe('test suite for List of podcasts component', () => {
         .toMatch('<h6>Cargando ...</h6>')
     })
 
-    it('should display the list of podasts when podcasts prop is not empty', () => {
+    it('should display the list of podasts when podcasts prop is not empty', async () => {
         const usePodcastsMock = {
-            podcasts : [{body: 'titulo1'}, {body: 'titulo2'}],
+            podcasts : [{id: 1, body: 'titulo1'}, {id:2, body: 'titulo2'}],
             loading : false
         }
 
-        const {container} = render(
+        const {findAllByTestId} = render(
             <ListOfPodcasts 
                 podcasts={usePodcastsMock.podcasts} 
                 loading= {usePodcastsMock.loading}
             />
         );
 
-        expect(container.innerHTML).toMatch('Podcasts');
+        expect(await findAllByTestId("PodcastTile")).toHaveLength(2);
+        
+        
 
     })
 })
